@@ -1,6 +1,4 @@
-//***************************************************************
-//                   HEADER FILE USED IN PROJECT
-//****************************************************************
+//                   -- HEADER FILE --
 
 #include<iostream>
 #include<fstream>
@@ -8,9 +6,7 @@
 #include<iomanip>
 using namespace std;
 
-//***************************************************************
-//                   CLASS USED IN PROJECT
-//****************************************************************
+//                  -- CLASS ACCOUNT--
 
 class account
 {
@@ -19,25 +15,26 @@ class account
 	int deposit;
 	char type;
 public:
-	void create_account();	//function to get data from user
-	void show_account() const;	//function to show data on screen
-	void modify();	//function to add new data
-	void dep(int);	//function to accept amount and add to balance amount
-	void draw(int);	//function to accept amount and subtract from balance amount
-	void report() const;	//function to show data in tabular format
-	int retacno() const;	//function to return account number
-	int retdeposit() const;	//function to return balance amount
-	char rettype() const;	//function to return type of account
-};         //class ends here
+	void create_account();	        //this function is used to get data from user.
+	void show_account() const;      //this function is used to show data on screen.
+	void modify();	                //this function is used to add new data.
+	void dep(int);           	//this function is used to accept amount and add to balance amount.
+	void draw(int);         	//this function is used to accept amount and subtract from balance amount.
+	void report() const;	        //this function is used to show data in tabular format.
+	int retacno() const;	        //this function is used to return account number.
+	int retdeposit() const;   	//this function is used to return balance amount.
+	char rettype() const;    	//this function is used to return type of account.
+};                        
+                           //here class ends.
 
 void account::create_account()
 {
 	cout<<"\nEnter The account No. : ";
 	cin>>acno;
-	cout<<"\n\nEnter The Name of The account Holder : ";
+	cout<<"\n\nEnter The Name of account Holder : ";
 	cin.ignore();
 	cin.getline(name,50);
-	cout<<"\nEnter Type of The account (C/S) : ";
+	cout<<"\nEnter Type of account (C/S) : ";
 	cin>>type;
 	type=toupper(type);
 	cout<<"\nEnter The Initial amount(>=500 for Saving and >=1000 for current ) : ";
@@ -99,21 +96,18 @@ char account::rettype() const
 	return type;
 }
 
+//       	--Function Declaration--
 
-//***************************************************************
-//    	function declaration
-//****************************************************************
-void write_account();	//function to write record in binary file
-void display_sp(int);	//function to display account details given by user
-void modify_account(int);	//function to modify record of file
-void delete_account(int);	//function to delete record of file
-void display_all();		//function to display all account details
-void deposit_withdraw(int, int); // function to desposit/withdraw amount for given account
-void intro();	//introductory screen function
+void write_account();	                  //this function is used to write record in binary file.
+void display_sp(int);	                  //this function is used to display account details given .by user
+void modify_account(int);	          //this function is used to modify record of file.
+void delete_account(int);	          //this function is used to delete record of file.
+void display_all();		          //this function is used to display all account details.
+void deposit_withdraw(int, int);          //this function is used to desposit/withdraw amount for given account.
+void intro();	                          //this function is used to show introductory screen.
 
-//***************************************************************
-//    	THE MAIN FUNCTION OF PROGRAM
-//****************************************************************
+
+//    	        --PROGRAM MAIN FUNCTION--
 
 int main()
 {
@@ -123,15 +117,15 @@ int main()
 	do
 	{
 		cout<<"\n\n\n\tMAIN MENU";
-		cout<<"\n\n\t01. NEW ACCOUNT";
-		cout<<"\n\n\t02. DEPOSIT AMOUNT";
-		cout<<"\n\n\t03. WITHDRAW AMOUNT";
-		cout<<"\n\n\t04. BALANCE ENQUIRY";
-		cout<<"\n\n\t05. ALL ACCOUNT HOLDER LIST";
-		cout<<"\n\n\t06. CLOSE AN ACCOUNT";
-		cout<<"\n\n\t07. MODIFY AN ACCOUNT";
-		cout<<"\n\n\t08. EXIT";
-		cout<<"\n\n\tSelect Your Option (1-8) ";
+		cout<<"\n\n\t 1. NEW ACCOUNT";
+		cout<<"\n\n\t 2. DEPOSIT AMOUNT";
+		cout<<"\n\n\t 3. WITHDRAW AMOUNT";
+		cout<<"\n\n\t 4. BALANCE ENQUIRY";
+		cout<<"\n\n\t 5. ALL ACCOUNT HOLDER LIST";
+		cout<<"\n\n\t 6. CLOSE AN ACCOUNT";
+		cout<<"\n\n\t 7. MODIFY AN ACCOUNT";
+		cout<<"\n\n\t 8. EXIT";
+		cout<<"\n\n\t Select Your Option (1-8) ";
 		cin>>ch;
 		switch(ch)
 		{
@@ -162,7 +156,7 @@ int main()
 			modify_account(num);
 			break;
 		 case '8':
-			cout<<"\n\n\tThanks for using bank managemnt system";
+			cout<<"\n\n\t pleasure helping you....Thanks user for using bank's facility";
 			break;
 		 default :cout<<"\a";
 		}
@@ -173,9 +167,7 @@ int main()
 }
 
 
-//***************************************************************
-//    	function to write in file
-//****************************************************************
+//    	          --FUNCTION USED TO WRITE INTO FILE--
 
 void write_account()
 {
@@ -187,9 +179,8 @@ void write_account()
 	outFile.close();
 }
 
-//***************************************************************
-//    	function to read specific record from file
-//****************************************************************
+
+//    	          --FUNCTION USED TO READ INTO FILE--
 
 void display_sp(int n)
 {
@@ -217,9 +208,7 @@ void display_sp(int n)
 }
 
 
-//***************************************************************
-//    	function to modify record of file
-//****************************************************************
+//    	        --FUNCTION USED TO MODIFY CONTENT INTO FILE--
 
 void modify_account(int n)
 {
@@ -229,7 +218,7 @@ void modify_account(int n)
     File.open("account.dat",ios::binary|ios::in|ios::out);
 	if(!File)
 	{
-		cout<<"File could not be open !! Press any Key...";
+		cout<<"File could not be open...Press any Key.";
 		return;
 	}
 	while(!File.eof() && found==false)
@@ -249,12 +238,11 @@ void modify_account(int n)
 	}
 	File.close();
 	if(found==false)
-		cout<<"\n\n Record Not Found ";
+		cout<<"\n\n No Record Found ";
 }
 
-//***************************************************************
-//    	function to delete record of file
-//****************************************************************
+
+//    	           --FUNCTION USED TO DELETE CONTENT FROM FILE--
 
 
 void delete_account(int n)
@@ -265,7 +253,7 @@ void delete_account(int n)
 	inFile.open("account.dat",ios::binary);
 	if(!inFile)
 	{
-		cout<<"File could not be open !! Press any Key...";
+		cout<<"File could not be open... Press any Key.";
 		return;
 	}
 	outFile.open("Temp.dat",ios::binary);
@@ -281,12 +269,11 @@ void delete_account(int n)
 	outFile.close();
 	remove("account.dat");
 	rename("Temp.dat","account.dat");
-	cout<<"\n\n\tRecord Deleted ..";
+	cout<<"\n\n\tYour Record is Deleted ..";
 }
 
-//***************************************************************
-//    	function to display all accounts deposit list
-//****************************************************************
+
+//    	         --FUNCTION USED TO DISPLAY DEPOSIT LIST--
 
 void display_all()
 {
@@ -295,23 +282,22 @@ void display_all()
 	inFile.open("account.dat",ios::binary);
 	if(!inFile)
 	{
-		cout<<"File could not be open !! Press any Key...";
+		cout<<"File could not be open...Press any Key.";
 		return;
 	}
 	cout<<"\n\n\t\tACCOUNT HOLDER LIST\n\n";
-	cout<<"====================================================\n";
-	cout<<"A/c no.      NAME           Type  Balance\n";
-	cout<<"====================================================\n";
+	cout<<"____________________________________________________\n";
+	cout<<"A/c no.-      NAME-           Type-  Balance\n";
+	cout<<"____________________________________________________\n";
 	while(inFile.read(reinterpret_cast<char *> (&ac), sizeof(account)))
 	{
-		ac.report();
+	ac.report();
 	}
 	inFile.close();
 }
 
-//***************************************************************
-//    	function to deposit and withdraw amounts
-//****************************************************************
+
+//    	       --FUNCTION TO DEPOSIT AND WITHDROW AMOuNT--
 
 void deposit_withdraw(int n, int option)
 {
@@ -322,7 +308,7 @@ void deposit_withdraw(int n, int option)
     File.open("account.dat", ios::binary|ios::in|ios::out);
 	if(!File)
 	{
-		cout<<"File could not be open !! Press any Key...";
+		cout<<"File could not be open...Press any Key.";
 		return;
 	}
 	while(!File.eof() && found==false)
@@ -333,7 +319,7 @@ void deposit_withdraw(int n, int option)
 			ac.show_account();
 			if(option==1)
 			{
-				cout<<"\n\n\tTO DEPOSITE AMOUNT ";
+				cout<<"\n\n\tTO DEPOSIT AMOUNT ";
 				cout<<"\n\nEnter The amount to be deposited";
 				cin>>amt;
 				ac.dep(amt);
@@ -341,11 +327,11 @@ void deposit_withdraw(int n, int option)
 		    if(option==2)
 			{
 				cout<<"\n\n\tTO WITHDRAW AMOUNT ";
-				cout<<"\n\nEnter The amount to be withdraw";
+				cout<<"\n\nEnter The amount need to withdraw";
 				cin>>amt;
 				int bal=ac.retdeposit()-amt;
 				if((bal<500 && ac.rettype()=='S') || (bal<1000 && ac.rettype()=='C'))
-					cout<<"Insufficience balance";
+					cout<<"Insufficient balance";
 				else
 					ac.draw(amt);
 		      }
@@ -358,23 +344,18 @@ void deposit_withdraw(int n, int option)
          }
     File.close();
 	if(found==false)
-		cout<<"\n\n Record Not Found ";
+		cout<<"\n\nNo Record Found ";
 }
 
 
-//***************************************************************
-//    	INTRODUCTION FUNCTION
-//****************************************************************
+//                -- FUNCTION OF INTRODUCTION--
 
 void intro()
 {
-	cout<<"\n\n\n\t  BANK";
-	cout<<"\n\n\tMANAGEMENT";
-	cout<<"\n\n\t  SYSTEM";
-	cout<<"\n\n\n\nMADE BY : Alok Mishra";
+	cout<<"\n\n\n\t BANK MANAGEMENT SYSTEM";
+	cout<<"\n\n\n\nPROJECT DONE BY :- HRITIK MISHRA";
 	cin.get();
 }
 
-//***************************************************************
-//    			END OF PROJECT
-//***************************************************************
+
+//    			    --END--
